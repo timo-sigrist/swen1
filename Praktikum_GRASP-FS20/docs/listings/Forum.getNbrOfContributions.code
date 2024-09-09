@@ -1,0 +1,12 @@
+    /**
+     * @return total contributions in the whole Forum
+     */
+    protected int getNbrOfContributions() {
+        int totalContributions = 0;
+        for (Topic topic : getTopics()) {
+            for (Discussion dicussion : topic.getDiscussions()) {
+                totalContributions += dicussion.getContributions().size();
+            }
+        }
+        return totalContributions;
+    }

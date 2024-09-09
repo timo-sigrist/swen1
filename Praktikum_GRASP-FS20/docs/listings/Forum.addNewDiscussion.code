@@ -1,0 +1,19 @@
+    /**
+     * Add discussion to topic with given user credentials
+     *
+     * @param userName       User who owns the discussion
+     * @param passwordHash   Pass for given user
+     * @param topicName      Name of the topic
+     * @param discussionName Name of the new discussion
+     * @throws DiscussionDuplicateException When discussion already exists
+     * @throws AuthenticationException      When user credentials couldn't be verified
+     */
+    protected void addNewDiscussion(String userName, byte[] passwordHash,
+                                    String topicName, String discussionName)
+            throws DiscussionDuplicateException, AuthenticationException {
+        if (getUserForName(userName).testPassword(passwordHash)) {
+            getTopicForName(topicName).addDiscussion(discussionName);
+        } else {
+            throw new AuthenticationException("Couldn't authenticate user \"" + userName + "\" with given credentials.");
+        }
+    }

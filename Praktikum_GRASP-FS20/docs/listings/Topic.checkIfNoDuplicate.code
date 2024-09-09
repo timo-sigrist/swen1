@@ -1,0 +1,13 @@
+    /**
+     * Check for duplicate discussions
+     * @param name Discussion name
+     * @return true if no duplicate has been found, else false
+     * @throws DiscussionDuplicateException
+     */
+    private boolean checkIfNoDuplicate(String name) throws DiscussionDuplicateException {
+        if (getDiscussionForName(name) != null) {
+            throw new DiscussionDuplicateException("Discussion with name \"" + name + "\" already exists.");
+        } else {
+            return true;
+        }
+    }

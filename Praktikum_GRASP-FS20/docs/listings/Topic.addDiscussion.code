@@ -1,0 +1,10 @@
+    /**
+     * Add new discussion if it does not already exists
+     * @param name Name for the Discussion to add
+     * @throws DiscussionDuplicateException
+     */
+    protected void addDiscussion(String name) throws DiscussionDuplicateException {
+        if (checkIfNoDuplicate(name)) {
+            discussions.add(new Discussion(name));
+        }
+    }
